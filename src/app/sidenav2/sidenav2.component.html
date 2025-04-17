@@ -1,0 +1,43 @@
+<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed': ''">
+  <div class="logo-container">
+    <button class="logo" (click)="toggleCollapse()">
+      {{ userType === 'Locataire' ? 'L' : 'T' }}
+    </button>
+      <div class="logo-text" *ngIf="collapsed">{{userType}}</div>
+      <button class="btn-close" *ngIf="collapsed" (click)="closeSidenav()">
+          <i class="fal fa-times close-icon"></i>
+      </button>
+  </div>
+  <div class="profil" *ngIf="collapsed">
+    <div class="P-Image">
+      <img src="../../assets/images/{{ utilisateur.image }}" alt="">
+    </div>
+    <div class="P-nom">
+      <p>{{ utilisateur.nom }} {{ utilisateur.prenom }}</p>
+    </div>
+  </div>
+  <ul class="sidenav-nav">
+      <li class="sidenav-nav-item" *ngFor="let data2 of navData2">
+          <a class="sidenav-nav-link" [routerLink]="[data2.RouteLink]"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact: true}"
+          >
+              <i class="sidenav-link-icon" [class]="data2.icon"></i>
+              <span class="sidenav-link-text"  *ngIf="collapsed">
+                  {{data2.label}}
+              </span>
+          </a>
+      </li >
+      <li class="sidenav-nav-item" *ngIf="userType === 'Locataire'">
+        <a class="sidenav-nav-link"  [routerLink]="['gestion-paiement']">
+          <i class="sidenav-link-icon fal fa-credit-card"></i>
+          <span class="sidenav-link-text"  *ngIf="collapsed">
+            Paiements
+          </span>
+        </a>
+      </li>
+      <li class="sidenav-nav-item">
+          <app-some [collapsed2]="collapsed"></app-some>
+      </li>
+  </ul>
+</div>

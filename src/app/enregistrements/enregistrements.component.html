@@ -1,0 +1,174 @@
+<div class="container mt-5">
+  <h2>Enregistrer un utilisateur</h2>
+
+  <!-- Choisir le type d'utilisateur -->
+  <div class="form-group">
+    <label for="typeUser">Type d'utilisateur</label>
+    <select id="typeUser" class="form-control" [(ngModel)]="selectedType">
+      <option value="Admin">Administrateur</option>
+      <option value="locataire">Locataire</option>
+      <option value="technicien">Technicien</option>
+      <option value="gestionnaire">Gestionnaire</option>
+    </select>
+  </div>
+
+  <!-- Formulaire pour Administrateur -->
+  <div *ngIf="selectedType === 'Admin'">
+    <h4>Enregistrer un Administrateur</h4>
+    <form (ngSubmit)="enregistrerUtilisateur()">
+      <div class="form-group">
+        <label for="nom">Nom</label>
+        <input type="text" class="form-control" id="nom" [(ngModel)]="utilisateur.nom" name="nom" required>
+      </div>
+      <div class="form-group">
+        <label for="prenom">Prénom</label>
+        <input type="text" class="form-control" id="prenom" [(ngModel)]="utilisateur.prenom" name="prenom" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" [(ngModel)]="utilisateur.email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="image">Image (URL)</label>
+        <input type="text" class="form-control" id="image" [(ngModel)]="utilisateur.image" name="image">
+      </div>
+      <div class="form-group">
+        <label for="adresse">Adresse</label>
+        <input type="text" class="form-control" id="adresse" [(ngModel)]="utilisateur.adresse" name="adresse">
+      </div>
+      <div class="form-group">
+        <label for="contact">Contact</label>
+        <input type="number" class="form-control" id="contact" [(ngModel)]="utilisateur.contact" name="contact" required>
+      </div>
+      <div class="form-group">
+        <label for="nomUtilisateur">Nom d'utilisateur</label>
+        <input type="text" class="form-control" id="nomUtilisateur" [(ngModel)]="utilisateur.nomUtilisateur" name="nomUtilisateur" required>
+      </div>
+      <div class="form-group">
+        <label for="motDePasse">Mot de passe</label>
+        <input type="password" class="form-control" id="motDePasse" [(ngModel)]="utilisateur.motDePasse" name="motDePasse" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Enregistrer</button>
+    </form>
+  </div>
+
+  <!-- Formulaire pour Locataire -->
+  <div *ngIf="selectedType === 'locataire'">
+    <h4>Enregistrer un Locataire</h4>
+    <form (ngSubmit)="enregistrerUtilisateur()">
+      <div class="form-group">
+        <label for="nom">Nom</label>
+        <input type="text" class="form-control" id="nom" [(ngModel)]="utilisateur.nom" name="nom" required>
+      </div>
+      <div class="form-group">
+        <label for="prenom">Prénom</label>
+        <input type="text" class="form-control" id="prenom" [(ngModel)]="utilisateur.prenom" name="prenom" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" [(ngModel)]="utilisateur.email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="adresse">Adresse</label>
+        <input type="text" class="form-control" id="adresse" [(ngModel)]="utilisateur.adresse" name="adresse">
+      </div>
+      <div class="form-group">
+        <label for="contact">Contact</label>
+        <input type="number" class="form-control" id="contact" [(ngModel)]="utilisateur.contact" name="contact" required>
+      </div>
+      <div class="form-group">
+        <label for="residence">Résidence</label>
+        <input type="text" class="form-control" id="residence" [(ngModel)]="utilisateur.residence" name="residence">
+      </div>
+      <div class="form-group">
+        <label for="nomUtilisateur">Nom d'utilisateur</label>
+        <input type="text" class="form-control" id="nomUtilisateur" [(ngModel)]="utilisateur.nomUtilisateur" name="nomUtilisateur" required>
+      </div>
+      <div class="form-group">
+        <label for="motDePasse">Mot de passe</label>
+        <input type="password" class="form-control" id="motDePasse" [(ngModel)]="utilisateur.motDePasse" name="motDePasse" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Enregistrer</button>
+    </form>
+  </div>
+
+  <!-- Formulaire pour Technicien -->
+  <div *ngIf="selectedType === 'technicien'">
+    <h4>Enregistrer un Technicien</h4>
+    <form (ngSubmit)="enregistrerUtilisateur()">
+      <div class="form-group">
+        <label for="nom">Nom</label>
+        <input type="text" class="form-control" id="nom" [(ngModel)]="utilisateur.nom" name="nom" required>
+      </div>
+      <div class="form-group">
+        <label for="prenom">Prénom</label>
+        <input type="text" class="form-control" id="prenom" [(ngModel)]="utilisateur.prenom" name="prenom" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" [(ngModel)]="utilisateur.email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="adresse">Adresse</label>
+        <input type="text" class="form-control" id="adresse" [(ngModel)]="utilisateur.adresse" name="adresse">
+      </div>
+      <div class="form-group">
+        <label for="contact">Contact</label>
+        <input type="number" class="form-control" id="contact" [(ngModel)]="utilisateur.contact" name="contact" required>
+      </div>
+      <div class="form-group">
+        <label for="metier">Métier</label>
+        <input type="text" class="form-control" id="metier" [(ngModel)]="utilisateur.metier" name="metier" required>
+      </div>
+      <div class="form-group">
+        <label for="nomUtilisateur">Nom d'utilisateur</label>
+        <input type="text" class="form-control" id="nomUtilisateur" [(ngModel)]="utilisateur.nomUtilisateur" name="nomUtilisateur" required>
+      </div>
+      <div class="form-group">
+        <label for="motDePasse">Mot de passe</label>
+        <input type="password" class="form-control" id="motDePasse" [(ngModel)]="utilisateur.motDePasse" name="motDePasse" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Enregistrer</button>
+    </form>
+  </div>
+
+  <!-- Formulaire pour Gestionnaire -->
+  <div *ngIf="selectedType === 'gestionnaire'">
+    <h4>Enregistrer un Gestionnaire</h4>
+    <form (ngSubmit)="enregistrerUtilisateur()">
+      <div class="form-group">
+        <label for="nom">Nom</label>
+        <input type="text" class="form-control" id="nom" [(ngModel)]="utilisateur.nom" name="nom" required>
+      </div>
+      <div class="form-group">
+        <label for="prenom">Prénom</label>
+        <input type="text" class="form-control" id="prenom" [(ngModel)]="utilisateur.prenom" name="prenom" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" [(ngModel)]="utilisateur.email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="adresse">Adresse</label>
+        <input type="text" class="form-control" id="adresse" [(ngModel)]="utilisateur.adresse" name="adresse">
+      </div>
+      <div class="form-group">
+        <label for="contact">Contact</label>
+        <input type="number" class="form-control" id="contact" [(ngModel)]="utilisateur.contact" name="contact" required>
+      </div>
+      <div class="form-group">
+        <label for="residence">Résidence</label>
+        <input type="text" class="form-control" id="residence" [(ngModel)]="utilisateur.residence" name="residence">
+      </div>
+      <div class="form-group">
+        <label for="nomUtilisateur">Nom d'utilisateur</label>
+        <input type="text" class="form-control" id="nomUtilisateur" [(ngModel)]="utilisateur.nomUtilisateur" name="nomUtilisateur" required>
+      </div>
+      <div class="form-group">
+        <label for="motDePasse">Mot de passe</label>
+        <input type="password" class="form-control" id="motDePasse" [(ngModel)]="utilisateur.motDePasse" name="motDePasse" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Enregistrer</button>
+    </form>
+  </div>
+</div>

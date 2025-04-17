@@ -1,0 +1,191 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+  padding: 20px;
+}
+
+.profile-section {
+  text-align: center;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  background: gray;
+  border-radius: 50%;
+  margin: auto;
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 10px;
+}
+
+.content {
+  width: 25%;
+  min-width: 180px;
+  height: 120px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+  background: #ffffff;
+  padding: 10px;
+}
+
+.taille{
+  font-size: xx-large;
+}
+
+.text {
+  background: #8690a3;
+  color: white;
+  padding: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.contenu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.image-bien img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+
+.compte h6 {
+  font-size: 2rem;
+  color: #333;
+  margin: 0;
+}
+
+.tasks, .chart {
+  margin: 0 15px;
+  grid-column: span 2;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.chart {
+  text-align: center;
+}
+
+.ligne{
+  display: flex;
+  width: 100%;
+
+}
+
+
+@keyframes progress {
+  0% {
+    stroke-dasharray: 0 200;
+  }
+}
+.circle-svg {
+  display: block;
+  margin: 20px auto;
+  width: 200px; /* Taille doublée */
+  height: 200px;
+}
+
+.circle-svg text {
+  fill: black;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.circle-svg circle {
+  fill: none;
+  stroke-width: 6;
+}
+
+.circle-svg .around {
+  stroke: #c4c4c4;
+}
+
+.circle-svg .percent {
+  stroke: #6f6fff;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: center;
+  transition: stroke-dasharray 1s ease-out;
+}
+
+
+body {
+  text-align:center;
+}
+
+
+
+
+
+
+
+/* Responsivité */
+@media (max-width: 1000px) {
+  .content {
+    width: 45%;
+  }
+  .tasks, .chart {
+   width: 50%;
+  }
+
+}
+
+@media (min-width: 750px) {
+  .tasks, .chart {
+    width: 49%;
+  }
+}
+
+  @media (max-width: 750px) {
+    .content {
+      width: 100%;
+    }
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+  .ligne{
+    display: flex;
+    flex-direction: column;
+
+  }
+    .tasks, .chart {
+      width: 100%;
+    }
+}

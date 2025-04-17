@@ -1,0 +1,63 @@
+<section class="h-100 gradient-custom-2">
+  <div class="container py-5 h-100">
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+        <div class="card shadow">
+          <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Détail de la maintenance</h4>
+          </div>
+          <div class="card-body">
+
+            <!-- Infos Maintenance -->
+            <h5 class="fw-bold text-primary">Informations générales</h5>
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <p><strong>Nom :</strong> {{ maintenance.nomMaintenance }}</p>
+                <p><strong>Date :</strong> {{ maintenance.dateM | date:'dd/MM/yyyy HH:mm' }}</p>
+              </div>
+              <div class="col-md-6">
+                <p><strong>Statut :</strong>
+                  <span class="badge"
+                        [ngClass]="{
+                          'bg-warning text-dark': maintenance.statut === 'Demandé',
+                          'bg-info text-dark': maintenance.statut === 'EnCours',
+                          'bg-success': maintenance.statut === 'Terminé'
+                        }">{{ maintenance.statut }}
+                  </span>
+                </p>
+                <p><strong>Description :</strong> {{ maintenance.description }}</p>
+              </div>
+            </div>
+
+            <hr>
+
+            <!-- Infos Locataire -->
+            <h5 class="fw-bold text-primary">Locataire concerné</h5>
+            <div class="row align-items-center mb-3">
+              <div class="col-md-3">
+                <img [src]="maintenance.locataires.imageURL" alt="Photo locataire"
+                     class="img-fluid rounded shadow-sm">
+              </div>
+              <div class="col-md-9">
+                <p><strong>Nom :</strong> {{ maintenance.locataires.nom }} {{ maintenance.locataires.prenom }}</p>
+                <p><strong>Adresse :</strong> {{ maintenance.locataires.adresse }}</p>
+                <p><strong>Téléphone :</strong> {{ maintenance.locataires.telephone1 }} / {{ maintenance.locataires.telephone2 }}</p>
+                <p><strong>Email :</strong> {{ maintenance.locataires.email }}</p>
+                <p><strong>Contrat :</strong> {{ maintenance.locataires.contrat }}</p>
+                <p><strong>Lit n° :</strong> {{ maintenance.locataires.numeroDuLit }}</p>
+              </div>
+            </div>
+
+            <hr>
+
+            <!-- Résidence -->
+            <h5 class="fw-bold text-primary">Résidence</h5>
+            <p><i class="bi bi-house-door-fill"></i> {{ maintenance.residence }}</p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,82 @@
+<div class="table-data">
+  <div class="order">
+    <div class="head">
+      <h3>Liste des paiements</h3>
+
+      <!-- Recherche -->
+      <div class="d-flex" role="search">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Rechercher par locataire"
+          aria-label="Search"
+          [(ngModel)]="searchFilter"
+          name="search"
+        >
+      </div>
+
+      <!-- Filtre par résidence -->
+      <select class="form-select" [(ngModel)]="selectedResidence" name="residence">
+        <option value="">Toutes les résidences</option>
+        <option *ngFor="let residence of residences" [value]="residence">{{ residence }}</option>
+      </select>
+
+      <!-- Filtre par statut -->
+      <select class="form-select" [(ngModel)]="selectedStatut" name="statut">
+        <option value="">Tous les statuts</option>
+        <option *ngFor="let statut of statuts" [value]="statut">{{ statut }}</option>
+      </select>
+
+      <!-- Filtre par méthode de paiement -->
+      <select class="form-select" [(ngModel)]="selectedMethode" name="methode">
+        <option value="">Toutes les méthodes</option>
+        <option *ngFor="let methode of methodes" [value]="methode">{{ methode }}</option>
+      </select>
+
+      <button type="button" class="btn btn-outline-primary">+ Ajouter</button>
+    </div>
+
+    <!-- Tableau de liste des paiements -->
+    <div class="table-container">
+      <table>
+        <thead>
+        <tr>
+          <th>Locataire</th>
+          <th>Date</th>
+          <th>Montant</th>
+          <th>Méthode</th>
+          <th>Statut</th>
+          <th>Résidence</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let paiement of filteredPaiements">
+          <td>
+            {{
+              paiement.locataire?.nom
+                ? paiement.locataire.nom + ' ' + paiement.locataire.prenom
+                : getNomPrenomLocataireById(paiement.locataire)
+            }}
+          </td>
+
+          <td>{{ paiement.date }}</td>
+          <td>{{ paiement.montant }} XOF</td>
+          <td>{{ paiement.methodeDepaiement }}</td>
+          <td>
+              <span [class]="paiement.statut === 'payé' ? 'badge bg-success' : 'badge bg-danger'">
+                {{ paiement.statut }}
+              </span>
+          </td>
+          <td>{{ paiement.residence }}</td>
+          <td>
+              <span class="material-icons bg-info text-white p-2 rounded-circle boutton" [routerLink]="['../gestion-paiement',paiement.idPaiement]">
+                keyboard_arrow_right
+              </span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

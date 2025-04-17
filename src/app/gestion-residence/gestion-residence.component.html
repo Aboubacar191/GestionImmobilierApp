@@ -1,0 +1,31 @@
+<div class="table-data">
+  <div class="order">
+    <div class="head">
+      <h3>Listes des Résidences</h3>
+      <div class="d-flex" >
+        <input class="form-control me-2" type="text" placeholder="Rechercher..." aria-label="Search" [(ngModel)]="residenceFilter">
+      </div>
+      <select class="form-select" [(ngModel)]="selectedType">
+        <option value="">Tous les types</option>
+        <option value="T3">T3</option>
+        <option value="T4">T4</option>
+        <option value="T5">T5</option>
+      </select>
+      <a href="#" class="btn ">+ Ajouter</a>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-3">
+      <div class="col mb-4" *ngFor="let residence of filteredResidences">
+        <div class="card" style="width: 18rem;">
+          <img [src]="residence.imageExterieur" class="card-img-top" alt="Image résidence" [title]="residence.nomResidence" />
+          <div class="card-body">
+            <h5 class="card-title">{{ residence.nomResidence }} </h5>
+
+            <p class="card-text">{{ residence.adresseResidence }}</p>
+            <button type="button" class="btn btn-outline-info" data-mdb-ripple-init data-mdb-ripple-color="dark" [routerLink]="['../gestion-residence', residence.idResidence]">Détails</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

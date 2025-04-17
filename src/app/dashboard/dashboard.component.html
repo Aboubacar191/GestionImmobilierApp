@@ -1,0 +1,62 @@
+<div class="dashboard">
+  <!-- Profil -->
+  <div class="profile-section">
+    <div class="profile-pic"><img class="profile-pic" src="assets/images/Capture%20d’écran%202022-05-30%20235041%20-%20Copie%20(2).png" alt="profil"></div>
+    <h2>ADAMA</h2>
+    <p>Admin</p>
+  </div>
+
+  <!-- Statistiques -->
+  <div class="stats">
+    <div class="content" *ngFor="let item of statistiques">
+      <div class="text">
+        <h3>{{ item.nom }}</h3>
+      </div>
+      <div class="contenu">
+        <div class="image-bien">
+          <i class="{{item.image}} taille"></i>
+        </div>
+        <div class="compte">
+          <h6>{{ item.valeur }}</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ligne">
+  <!-- Tableau des tâches -->
+  <div class="tasks">
+    <h3>Tâches</h3>
+    <table>
+      <tr>
+        <th>Tâche</th>
+        <th>Valeur</th>
+      </tr>
+      <tr *ngFor="let task of taches">
+        <td>{{ task.nom }}</td>
+        <td>{{ task.valeur }}</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Graphique -->
+  <div class="chart">
+    <h3>Occupation des Résidences</h3>
+    <svg viewBox="0 0 72 72" class="circle-svg">
+      <!-- Cercle de fond -->
+      <circle class="around" cx="36" cy="36" r="30"></circle>
+
+      <!-- Cercle d'occupation dynamique -->
+      <circle class="percent" cx="36" cy="36" r="30"
+              [attr.stroke-dasharray]="dashArray + ', 188.4'"></circle>
+
+      <!-- Texte au centre -->
+      <text x="36" y="42" text-anchor="middle" font-size="10">
+        {{ occupees }}/{{ totalResidences }}
+      </text>
+    </svg>
+  </div>
+
+
+</div>

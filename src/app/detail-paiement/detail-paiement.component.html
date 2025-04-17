@@ -1,0 +1,102 @@
+<div class="card">
+  <div class="card-body">
+    <div class="container mb-5 mt-3">
+      <div class="row d-flex align-items-baseline">
+        <div class="col-xl-9">
+          <p style="color: #7e8d9f;font-size: 20px;">
+            Facture >> <strong>ID: #{{ paiement.idPaiement }}</strong>
+          </p>
+        </div>
+        <div class="col-xl-3 float-end text-end">
+          <a class="btn btn-light border-0"><i class="fas fa-print text-primary"></i> Imprimer</a>
+          <a class="btn btn-light"><i class="far fa-file-pdf text-danger"></i> Exporter</a>
+        </div>
+        <hr>
+      </div>
+
+      <div class="container">
+        <div class="text-center mb-4">
+          <img src="assets/images/Capture%20d'écran%202024-08-21%20163431.png" alt="Logo" style="height: 50px;">
+          <p class="pt-2">Plateforme Résidence IT</p>
+        </div>
+
+        <div class="row">
+          <div class="col-xl-8">
+            <ul class="list-unstyled">
+              <li class="text-muted">Locataire:
+                <span style="color:#5d9fc5;">
+                  {{ paiement.locataire.prenom }} {{ paiement.locataire.nom }}
+                </span>
+              </li>
+              <li class="text-muted">Adresse: {{ paiement.locataire.adresse }}</li>
+              <li class="text-muted"><i class="fas fa-phone"></i> {{ paiement.locataire.telephone1 }}</li>
+              <li class="text-muted"><i class="fas fa-envelope"></i> {{ paiement.locataire.email }}</li>
+            </ul>
+          </div>
+
+          <div class="col-xl-4">
+            <p class="text-muted">Paiement</p>
+            <ul class="list-unstyled">
+              <li class="text-muted">
+                <i class="fas fa-circle text-info"></i> <strong>ID:</strong> #{{ paiement.idPaiement }}
+              </li>
+              <li class="text-muted">
+                <i class="fas fa-circle text-info"></i> <strong>Date:</strong> {{ paiement.date | date:'dd/MM/yyyy' }}
+              </li>
+              <li class="text-muted">
+                <i class="fas fa-circle text-info"></i> <strong>Statut:</strong>
+                <span class="badge bg-success text-white">{{ paiement.statut }}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row my-2 mx-1 justify-content-center">
+          <table class="table table-striped table-borderless">
+            <thead class="text-white" style="background-color:#84B0CA;">
+            <tr>
+              <th>#</th>
+              <th>Description</th>
+              <th>Méthode</th>
+              <th>Montant (FCFA)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Loyer mensuel - Lit n°{{ paiement.locataire.numeroDuLit }}</td>
+              <td>{{ paiement.methodeDepaiement }}</td>
+              <td>{{ paiement.montant | number:'1.0-0' }} FCFA</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="row">
+          <div class="col-xl-8">
+            <p class="ms-3">Note : Paiement effectué pour le logement de type {{ paiement.locataire.residence.typeLogement }} à la résidence <strong>{{ paiement.locataire.residence.nomResidence }}</strong>.</p>
+          </div>
+          <div class="col-xl-3">
+            <ul class="list-unstyled">
+              <li class="text-muted ms-3"><span class="text-black me-4">Total</span>{{ paiement.montant | number:'1.0-0' }} FCFA</li>
+              <li class="text-muted ms-3 mt-2"><span class="text-black me-4">Taxe (0%)</span>0 FCFA</li>
+            </ul>
+            <p class="text-black float-start"><span class="text-black me-3"> Valider par :</span>
+              <span style="font-size: 20px;">{{ paiement.administrateur?.nom}} {{ paiement.administrateur?.prenom}} </span></p>
+          </div>
+        </div>
+
+        <hr>
+        <div class="row">
+          <div class="col-xl-10">
+            <p>Merci pour votre paiement !</p>
+          </div>
+          <div class="col-xl-2">
+            <button type="button" class="btn btn-primary text-capitalize" style="background-color:#60bdf3;">Télécharger</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

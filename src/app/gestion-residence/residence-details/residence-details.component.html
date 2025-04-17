@@ -1,0 +1,81 @@
+<section class="h-100 gradient-custom-2">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center">
+      <div class="col-lg-10">
+        <div class="card shadow">
+          <div class="rounded-top text-white d-flex flex-row" style="background-color: #003366; height: 200px;">
+            <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
+              <img *ngIf="residence.imageExterieur" [src]="residence.imageExterieur" alt="Image Extérieure"
+                   class="img-fluid img-thumbnail mt-4 mb-2"
+                   style="width: 150px; z-index: 1;">
+              <div *ngIf="!residence.imageExterieur" class="bg-light text-center mt-4 mb-2 rounded shadow-sm"
+                   style="width: 150px; height: 150px; line-height: 150px;">
+                <span class="text-muted">Aucune image</span>
+              </div>
+            </div>
+            <div class="ms-3 mt-5 text-white">
+              <h4 class="fw-bold">{{ residence.nomResidence }}</h4>
+              <p class="mb-0">{{ residence.adresseResidence }}</p>
+              <p class="mb-0">Type : {{ residence.typeLogement }}</p>
+            </div>
+          </div>
+
+          <div class="card-body p-4">
+            <h5 class="fw-bold mb-3">Informations sur la résidence</h5>
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <p><strong>Nombre de locataires actuel :</strong> {{ residence.nbActuelLocataire }}</p>
+              </div>
+              <div class="col-md-6">
+                <p><strong>Capacité maximale :</strong> {{ residence.nbMaxLocataire }}</p>
+              </div>
+            </div>
+
+            <hr>
+
+
+
+            <h5 class="fw-bold mt-4">Demandes de maintenance</h5>
+            <div *ngIf="residence.maintenanceList.length > 0" class="table-responsive">
+              <table class="table table-bordered">
+                <thead class="table-light">
+                <tr>
+                  <th>Nom</th>
+                  <th>Date</th>
+                  <th>Statut</th>
+                  <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let m of residence.maintenanceList">
+                  <td>{{ m.nomMaintenance }}</td>
+                  <td>{{ m.dateM | date: 'dd/MM/yyyy' }}</td>
+                  <td>{{ m.statut }}</td>
+                  <td>{{ m.description }}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <div *ngIf="residence.maintenanceList.length === 0" class="text-muted">Aucune maintenance demandée.</div>
+
+            <hr>
+
+            <h5 class="fw-bold mt-4">Photos intérieures</h5>
+            <div class="row">
+              <div class="col-md-6 mb-3" *ngIf=" residence.imageInterieur1">
+                <img [src]="residence.imageInterieur1" class="img-fluid rounded shadow-sm" alt="Intérieur 1">
+              </div>
+              <div class="col-md-6 mb-3" *ngIf="residence.imageInterieur2">
+                <img [src]="residence.imageInterieur2" class="img-fluid rounded shadow-sm" alt="Intérieur 2">
+              </div>
+              <div *ngIf="!residence.imageInterieur1 && !residence.imageInterieur2" class="text-muted ps-3">
+                Aucune image intérieure disponible.
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

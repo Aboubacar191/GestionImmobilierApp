@@ -1,0 +1,61 @@
+<div class="table-data">
+  <div class="order">
+    <div class="head">
+      <h3>Liste des maintenances</h3>
+
+      <!-- Recherche -->
+      <div class="d-flex" role="search">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Rechercher par nom"
+          aria-label="Search"
+          [(ngModel)]="searchFilter"
+          name="search"
+        >
+      </div>
+
+      <!-- Filtre par résidence -->
+      <select class="form-select" [(ngModel)]="selectedResidence" name="residence">
+        <option value="">Toutes les résidences</option>
+        <option *ngFor="let residence of residences" [value]="residence">{{ residence }}</option>
+      </select>
+
+      <!-- Filtre par statut -->
+      <select class="form-select" [(ngModel)]="selectedStatut" name="statut">
+        <option value="">Tous les statuts</option>
+        <option *ngFor="let statut of statuts" [value]="statut">{{ statut }}</option>
+      </select>
+
+      <button type="button" class="btn btn-outline-primary">+ Ajouter</button>
+    </div>
+
+    <!-- Tableau de liste des maintenances -->
+    <div class="table-container">
+      <table>
+        <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Date</th>
+          <th>Statut</th>
+          <th>Résidence</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let maintenance of filteredMaintenances">
+          <td>{{ maintenance.nomMaintenance }}</td>
+          <td>{{ maintenance.dateM | date:'dd/MM/yyyy'}}</td>
+          <td>{{ maintenance.statut }}</td>
+          <td>{{ maintenance.residence }}</td>
+          <td>
+              <span class="material-icons bg-info text-white p-2 rounded-circle boutton" [routerLink]="['../gestion-maintenance',maintenance.idMaintenance]">
+                keyboard_arrow_right
+              </span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

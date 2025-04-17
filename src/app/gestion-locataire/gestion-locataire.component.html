@@ -1,0 +1,55 @@
+<div class="table-data">
+  <div class="order">
+    <div class="head">
+      <h3>Liste des Locataires</h3>
+
+      <!-- Recherche -->
+      <div class="d-flex" role="search">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Rechercher par nom"
+          aria-label="Search"
+          [(ngModel)]="searchFilter"
+          name="search"
+        >
+
+      </div>
+
+      <!-- Filtre par résidence -->
+      <select class="form-select" [(ngModel)]="selectedResidence" name="residence">
+        <option value="">Toutes les résidences</option>
+        <option *ngFor="let residence of residences" [value]="residence">{{ residence }}</option>
+      </select>
+
+
+      <button type="button" class="btn btn-outline-primary">+ Ajouter</button>
+    </div>
+
+    <!-- Tableau de liste des locataires -->
+    <div class="table-container">
+      <table>
+        <thead>
+        <tr>
+          <th>Image</th>
+          <th>Nom</th>
+          <th>Contrat</th>
+          <th>Résidence</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let locataire of filteredLocataires">
+          <td><img [src]="locataire.image" alt="Photo de {{ locataire.name }}"></td>
+          <td>{{ locataire.nom }}</td>
+          <td>{{ locataire.contrat }}</td>
+          <td>{{ locataire.residence }}</td>
+          <td>
+            <span class="material-icons bg-info text-white p-2 rounded-circle boutton" [routerLink]="['../gestion-locataire',locataire.id]">keyboard_arrow_right</span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<body>
+  <img class="wave" src="../../assets/images/9496050.png" alt="">
+  <div class="container">
+    <div class="img">
+      <img  src="../../assets/images/undraw_in_sync_re_jlqd.svg" alt="">
+    </div>
+    <div class="login-container">
+      <form novalidate (ngSubmit)="saveData(registerForm)" #registerForm="ngForm">
+        <img class="avatar" src="../../assets/images/Capture d'écran 2024-08-21 163431.png" alt="">
+        <h2 class="poppins-semibold">Bienvenue</h2>
+
+        <!-- Affichage de l'alerte Bootstrap si un message d'erreur est présent -->
+        <div *ngIf="errorMessage" class="poppins-semibold alert alert-primary">
+          {{ errorMessage }}
+        </div>
+
+        <!-- Formulaire de connexion -->
+        <div [ngClass]="dicClass" (focusin)="isFocus()" (focusout)="checkInput($event)">
+          <div class="i">
+            <i class="fas fa-user"></i>
+          </div>
+          <div>
+            <h5 class="poppins-semibold">Username</h5>
+            <input type="text" class="input poppins-semibold" (focus)="isFocus()" (blur)="checkInput($event)" required [(ngModel)]="user.username" name="username" #usernameVar="ngModel"
+            [ngClass]="{'is-invalid':usernameVar.touched && !usernameVar.valid}">
+          </div>
+        </div>
+
+        <div [ngClass]="dicClass2" (focusin)="isFocus2()" (focusout)="checkInput2($event)">
+          <div class="i">
+            <i class="fas fa-lock"></i>
+          </div>
+          <div>
+            <h5 class="poppins-semibold">Password</h5>
+            <input type="password" class="input poppins-semibold" (focus)="isFocus2()" (blur)="checkInput2($event)" required [(ngModel)]="user.password" name="password" #passwordVar="ngModel"
+            [ngClass]="{'is-invalid':passwordVar.touched && !passwordVar.valid}">
+
+          </div>
+        </div>
+
+        <a href="#" class="poppins-semibold">Mot de passe oublié ?</a>
+        <input class="poppins-semibold btn" type="submit" value="Se connecter" [disabled]="!registerForm.valid">
+      </form>
+    </div>
+  </div>
+</body>
