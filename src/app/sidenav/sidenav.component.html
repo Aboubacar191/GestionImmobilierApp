@@ -1,7 +1,7 @@
 <div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed': ''">
   <div class="logo-container">
       <button class="logo" (click)="toggleCollapse()">
-        {{ userType === 'ADMIN' ? 'A' : 'G' }}
+        {{ userType === 'Administrateur' ? 'A' : 'G' }}
       </button>
       <div class="logo-text" *ngIf="collapsed">{{userType}}</div>
       <button class="btn-close" *ngIf="collapsed" (click)="closeSidenav()">
@@ -20,7 +20,7 @@
               </span>
           </a>
       </li>
-      <li class="sidenav-nav-item" *ngIf="userType === 'ADMIN'">
+      <li class="sidenav-nav-item" *ngIf="userType === 'Administrateur'">
         <a class="sidenav-nav-link"  [routerLink]="['gestion-personnel']" routerLinkActive="active">
           <i class="sidenav-link-icon fal fa-users"></i>
           <span class="sidenav-link-text"  *ngIf="collapsed">

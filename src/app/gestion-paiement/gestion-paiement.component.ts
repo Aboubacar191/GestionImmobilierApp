@@ -11,7 +11,7 @@ import {ResidenceService} from "../gestion-residence/residence-details/residence
   standalone: true,
   imports: [NgForOf, ReactiveFormsModule, FormsModule, RouterLink],
   templateUrl: './gestion-paiement.component.html',
-  styleUrls: ['./gestion-paiement.component.css'] // ✅ corrigé
+  styleUrls: ['./gestion-paiement.component.css']
 })
 export class GestionPaiementComponent implements OnInit {
   constructor(

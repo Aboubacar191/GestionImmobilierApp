@@ -64,21 +64,21 @@ export class LoginComponent implements OnInit {
     this.http.post<any>('http://localhost:8080/api/auth/login', this.user)
       .subscribe({
         next: (response) => {
-          const typeUser = response.TypeUser;
-          const Token = response.token;
-          const id = response.id;
+          const token = response.token;
+          this.AuthService.saveToken(token);
 
-          if (typeUser === 'ADMIN') {
-            this.AuthService.saveToken(Token);
-            this.auth2Service.savedata(typeUser, id);
+          const decoded = this.auth2Service.decodeToken(token); // Utilisation de la méthode ci-dessus
+          const typeUser = decoded?.role;
+          const id = decoded?.id;
+
+
+          this.auth2Service.savedata(typeUser, id);
+
+          if (typeUser === 'Administrateur') {
             this.router.navigate(['/Admin']);
           } else if (typeUser === 'Locataire') {
-            this.AuthService.saveToken(Token);
-            this.auth2Service.savedata(typeUser, id);
             this.router.navigate(['/DLocataire']);
           } else if (typeUser === 'Gestionnaire') {
-            this.AuthService.saveToken(Token);
-            this.auth2Service.savedata(typeUser, id);
             this.router.navigate(['/Gestionnaire']);
           }
         },
@@ -87,6 +87,8 @@ export class LoginComponent implements OnInit {
         }
       });
   }
+
+
 
 
 

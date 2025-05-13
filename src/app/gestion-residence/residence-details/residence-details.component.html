@@ -30,10 +30,30 @@
                 <p><strong>Capacité maximale :</strong> {{ residence.nbMaxLocataire }}</p>
               </div>
             </div>
-
             <hr>
 
+            <h5 class="fw-bold mt-4">Installations</h5>
+            <div *ngIf="residence.installations.length > 0" class="table-responsive">
+              <table class="table table-bordered">
+                <thead class="table-light">
+                <tr>
+                  <th>Nom de l'équipement</th>
+                  <th>Description</th>
+                  <th>Quantité</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let i of residence.installations">
+                  <td>{{ i.equipment.nomEquipement }}</td>
+                  <td>{{ i.equipment.description }}</td>
+                  <td>{{ i.quantite }}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <div *ngIf="residence.installations.length === 0" class="text-muted">Aucune installation enregistrée.</div>
 
+            <hr>
 
             <h5 class="fw-bold mt-4">Demandes de maintenance</h5>
             <div *ngIf="residence.maintenanceList.length > 0" class="table-responsive">

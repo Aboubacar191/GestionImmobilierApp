@@ -3,6 +3,7 @@ import { Component, AfterViewInit, OnDestroy } from '@angular/core';
 import { Auth2Service } from '../login/auth2.service';
 import { PersonService } from '../shared/Services/person.service';
 import { RouterLink } from '@angular/router';
+import { ChangeDetectorRef } from '@angular/core'; // 🔧 Import ajouté
 
 declare var Chart: any;
 
@@ -20,9 +21,13 @@ export class DashboardComponent implements AfterViewInit, OnDestroy {
   occupees: number = 0;
   libres: number = 0;
   dashArray: string = '0, 100';
-  dashOffset: string = '100'; // Pour animer l'effet de remplissage
+  dashOffset: string = '100';
 
-  constructor(private auth2Service: Auth2Service, private personService: PersonService) {}
+  constructor(
+    private auth2Service: Auth2Service,
+    private personService: PersonService,
+    private cdr: ChangeDetectorRef // 🔧 Injecté ici
+  ) {}
 
   statistiques = [
     { nom: 'Résidence', valeur: 12, image: 'fa-solid fa-house' },
@@ -54,10 +59,11 @@ export class DashboardComponent implements AfterViewInit, OnDestroy {
       const totalCircumference = 2 * Math.PI * 30;
       const occupiedPercentage = (this.occupees / this.totalResidences) * totalCircumference;
 
-      // Ajout d'un léger délai pour animer le changement
+      // ✅ Correction : détection manuelle des changements
       setTimeout(() => {
         this.dashArray = `${occupiedPercentage}, ${totalCircumference}`;
         this.dashOffset = `${100 - (this.occupees / this.totalResidences) * 100}`;
+        this.cdr.detectChanges(); // 🔧 Ici on force Angular à prendre en compte le changement
       }, 300);
     } else {
       this.occupees = 0;

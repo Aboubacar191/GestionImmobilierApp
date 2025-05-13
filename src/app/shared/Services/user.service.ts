@@ -2,143 +2,123 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'http://localhost:8080/api/residences';
-  private apiUr2 = 'http://localhost:8080/api/equipements';
-  private apiUr3 = 'http://localhost:8080/api/compteUsers';
-  private apiUr4 = 'http://localhost:8080/api/maintenances';
-  private apiUr5 = 'http://localhost:8080/api/paiements';
-  private apiUr6 = 'http://localhost:8080/api/roles';
+  private apiResidences = 'http://localhost:8080/api/residences';
+  private apiEquipements = 'http://localhost:8080/api/equipements';
+  private apiMaintenances = 'http://localhost:8080/api/maintenances';
+  private apiPaiements = 'http://localhost:8080/api/paiements';
+  private apiInstallations = 'http://localhost:8080/api/installations';
 
   constructor(private http: HttpClient) {}
 
-  // Residences
+  // Résidences
   getAllResidences(): Observable<any> {
-    return this.http.get(this.apiUrl);
+    return this.http.get(this.apiResidences);
   }
 
   getResidenceById(id: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/${id}`);
+    return this.http.get(`${this.apiResidences}/${id}`);
   }
 
   createResidence(residence: any): Observable<any> {
-    return this.http.post(this.apiUrl, residence);
+    return this.http.post(this.apiResidences, residence);
   }
 
   updateResidence(id: number, residence: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${id}`, residence);
+    return this.http.put(`${this.apiResidences}/${id}`, residence);
   }
 
   deleteResidence(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`);
+    return this.http.delete(`${this.apiResidences}/${id}`);
   }
 
-  // Equipements
+  // Équipements
   getAllEquipements(): Observable<any> {
-    return this.http.get(this.apiUr2);
+    return this.http.get(this.apiEquipements);
   }
 
   getEquipementById(id: number): Observable<any> {
-    return this.http.get(`${this.apiUr2}/${id}`);
+    return this.http.get(`${this.apiEquipements}/${id}`);
   }
 
   createEquipement(equipement: any): Observable<any> {
-    return this.http.post(this.apiUr2, equipement);
+    return this.http.post(this.apiEquipements, equipement);
   }
 
   updateEquipement(id: number, equipement: any): Observable<any> {
-    return this.http.put(`${this.apiUr2}/${id}`, equipement);
+    return this.http.put(`${this.apiEquipements}/${id}`, equipement);
   }
 
   deleteEquipement(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUr2}/${id}`);
-  }
-
-  // Compte Users
-  getAllUsers(): Observable<any> {
-    return this.http.get(this.apiUr3);
-  }
-
-  getUserById(id: number): Observable<any> {
-    return this.http.get(`${this.apiUr3}/${id}`);
-  }
-
-  createUser(user: any): Observable<any> {
-    return this.http.post(this.apiUr3, user);
-  }
-
-  updateUser(id: number, user: any): Observable<any> {
-    return this.http.put(`${this.apiUr3}/${id}`, user);
-  }
-
-  deleteUser(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUr3}/${id}`);
+    return this.http.delete(`${this.apiEquipements}/${id}`);
   }
 
   // Maintenances
-  getAllMaintenance(): Observable<any> {
-    return this.http.get(this.apiUr4);
+  getAllMaintenances(): Observable<any> {
+    return this.http.get(this.apiMaintenances);
   }
 
   getMaintenanceById(id: number): Observable<any> {
-    return this.http.get(`${this.apiUr4}/${id}`);
+    return this.http.get(`${this.apiMaintenances}/${id}`);
   }
 
   createMaintenance(maintenance: any): Observable<any> {
-    return this.http.post(this.apiUr4, maintenance);
+    return this.http.post(this.apiMaintenances, maintenance);
   }
 
   updateMaintenance(id: number, maintenance: any): Observable<any> {
-    return this.http.put(`${this.apiUr4}/${id}`, maintenance);
+    return this.http.put(`${this.apiMaintenances}/${id}`, maintenance);
   }
 
   deleteMaintenance(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUr4}/${id}`);
+    return this.http.delete(`${this.apiMaintenances}/${id}`);
   }
 
   // Paiements
   getAllPaiements(): Observable<any> {
-    return this.http.get(this.apiUr5);
+    return this.http.get(this.apiPaiements);
   }
 
   getPaiementById(id: number): Observable<any> {
-    return this.http.get(`${this.apiUr5}/${id}`);
+    return this.http.get(`${this.apiPaiements}/${id}`);
   }
 
   createPaiement(paiement: any): Observable<any> {
-    return this.http.post(this.apiUr5, paiement);
+    return this.http.post(this.apiPaiements, paiement);
   }
 
   updatePaiement(id: number, paiement: any): Observable<any> {
-    return this.http.put(`${this.apiUr5}/${id}`, paiement);
+    return this.http.put(`${this.apiPaiements}/${id}`, paiement);
   }
 
   deletePaiement(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUr5}/${id}`);
+    return this.http.delete(`${this.apiPaiements}/${id}`);
   }
 
-  // Roles
-  getAllRoles(): Observable<any> {
-    return this.http.get(this.apiUr6);
+  // Installations
+  getAllInstallations(): Observable<any> {
+    return this.http.get(this.apiInstallations);
   }
 
-  getRoleById(id: number): Observable<any> {
-    return this.http.get(`${this.apiUr6}/${id}`);
+  getInstallationById(id: number): Observable<any> {
+    return this.http.get(`${this.apiInstallations}/${id}`);
   }
 
-  createRole(role: any): Observable<any> {
-    return this.http.post(this.apiUr6, role);
+  createInstallation(installation: any): Observable<any> {
+    return this.http.post(this.apiInstallations, installation);
   }
 
-  updateRole(id: number, role: any): Observable<any> {
-    return this.http.put(`${this.apiUr6}/${id}`, role);
+  updateInstallation(id: number, installation: any): Observable<any> {
+    return this.http.put(`${this.apiInstallations}/${id}`, installation);
   }
 
-  deleteRole(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUr6}/${id}`);
+  deleteInstallation(id: number): Observable<any> {
+    return this.http.delete(`${this.apiInstallations}/${id}`);
   }
 }
+
 

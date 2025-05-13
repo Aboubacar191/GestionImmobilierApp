@@ -73,7 +73,7 @@ export class UserDetailsComponent implements OnInit {
         error => console.error('Erreur lors de la récupération du locataire', error)
       );
 
-      const maintenanceSubscription = this.userService.getAllMaintenance().subscribe(
+      const maintenanceSubscription = this.userService.getAllMaintenances().subscribe(
         data => {
           this.Allmaintenance = data;
           this.filterMaintenanceByLocataire(id);

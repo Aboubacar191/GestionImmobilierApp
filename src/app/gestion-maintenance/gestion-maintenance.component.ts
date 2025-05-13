@@ -38,7 +38,7 @@ export class GestionMaintenanceComponent implements OnInit {
   ];
 
   ngOnInit() {
-    this.userService.getAllMaintenance().subscribe(
+    this.userService.getAllMaintenances().subscribe(
       (data: any[]) => {
         if (data && Array.isArray(data)) {
           this.maintenances = data.filter(item => typeof item === 'object');

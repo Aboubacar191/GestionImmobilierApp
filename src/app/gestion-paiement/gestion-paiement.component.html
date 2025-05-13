@@ -68,7 +68,7 @@
                 {{ paiement.statut }}
               </span>
           </td>
-          <td>{{ paiement.residence }}</td>
+          <td>{{ paiement.residence?.nomResidence }}</td>
           <td>
               <span class="material-icons bg-info text-white p-2 rounded-circle boutton" [routerLink]="['../gestion-paiement',paiement.idPaiement]">
                 keyboard_arrow_right
