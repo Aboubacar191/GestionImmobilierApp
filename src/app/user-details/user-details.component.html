@@ -16,7 +16,7 @@
             <ul class="list-group list-group-flush rounded-3">
               <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                 <i class="fas fa-home fa-lg text-warning"></i>
-                <p class="mb-0">{{ user.residence?.nomResidence }}</p>
+                <p class="mb-0">{{ user.nomResidence }}</p>
               </li>
               <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                 <i class="fas fa-map-marker-alt fa-lg text-body"></i>
@@ -60,16 +60,16 @@
             <hr>
             <div class="row">
               <div class="col-sm-3"><p class="mb-0">Nom d'Utilisateur</p></div>
-              <div class="col-sm-9"><p class="text-muted mb-0">{{ user.compteuser?.username }}</p></div>
+              <div class="col-sm-9"><p class="text-muted mb-0">{{ user.username }}</p></div>
             </div>
           </div>
         </div>
 
-        <div class="row">
-          <div class="row">
+
+          <div class="card mb-4">
             <!-- Paiements -->
-            <div class="col-md-6">
-              <div class="card mb-4 mb-md-0">
+            <div class="col-md-20">
+              <div class="card mb-0 mb-md-0">
                 <div class="card-body">
                   <p class="mb-4"><span class="text-primary font-italic me-1">Historique</span> des paiements</p>
                   <div *ngFor="let paiement of user.paiementList?.slice(0, 3)">
@@ -85,27 +85,11 @@
                 </div>
               </div>
             </div>
-
-            <!-- Maintenances -->
-            <div class="col-md-6">
-              <div class="card mb-4 mb-md-0">
-                <div class="card-body">
-                  <p class="mb-4"><span class="text-primary font-italic me-1">Historique</span> de maintenance</p>
-                  <div *ngFor="let maintenance of user.maintenanceList?.slice(0, 3)">
-                    <p class="mb-1">
-                      {{ maintenance.nomMaintenance }} - {{ maintenance.statut }}
-                    </p>
-                    <div class="progress rounded mb-2" style="height: 5px;">
-                      <div class="progress-bar bg-warning" role="progressbar" style="width: 50%"
-                           aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
-        </div>
+
+
+
+
         </div>
       </div>
     </div>

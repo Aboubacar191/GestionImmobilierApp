@@ -33,17 +33,15 @@
         <tr>
           <th>Image</th>
           <th>Nom</th>
-          <th>Contrat</th>
           <th>Résidence</th>
           <th></th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let locataire of filteredLocataires">
-          <td><img [src]="locataire.image" alt="Photo de {{ locataire.name }}"></td>
+          <td><img [src]="locataire.imageURL" alt="Photo de {{ locataire.name }}"></td>
           <td>{{ locataire.nom }} {{ locataire.prenom }}</td>
-          <td>{{ locataire.contrat }}</td>
-          <td>{{ locataire.residence?.nomResidence }}</td>
+          <td>{{ locataire.nomResidence }}</td>
           <td>
             <span class="material-icons bg-info text-white p-2 rounded-circle boutton" [routerLink]="['../gestion-locataire',locataire.id]">keyboard_arrow_right</span>
           </td>

@@ -36,7 +36,7 @@ export class DetailPaiementComponent implements OnInit{
     if (idParam) {
       const id = +idParam;
 
-      const personSubscription = this.userService.getPaiementById(id).subscribe(
+      const personSubscription = this.userService.getPaiementDetailsById(id).subscribe(
         data => {
           if (data) {
             this.paiement = data;

@@ -6,6 +6,12 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Ajoute de la marge et une touche moderne si besoin */
+table td, table th {
+  vertical-align: middle;
+}
+
+
 .order {
   display: flex;
   flex-direction: column;

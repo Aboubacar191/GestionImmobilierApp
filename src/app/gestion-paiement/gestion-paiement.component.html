@@ -15,11 +15,6 @@
         >
       </div>
 
-      <!-- Filtre par résidence -->
-      <select class="form-select" [(ngModel)]="selectedResidence" name="residence">
-        <option value="">Toutes les résidences</option>
-        <option *ngFor="let residence of residences" [value]="residence">{{ residence }}</option>
-      </select>
 
       <!-- Filtre par statut -->
       <select class="form-select" [(ngModel)]="selectedStatut" name="statut">
@@ -46,7 +41,6 @@
           <th>Montant</th>
           <th>Méthode</th>
           <th>Statut</th>
-          <th>Résidence</th>
           <th></th>
         </tr>
         </thead>
@@ -54,9 +48,7 @@
         <tr *ngFor="let paiement of filteredPaiements">
           <td>
             {{
-              paiement.locataire?.nom
-                ? paiement.locataire.nom + ' ' + paiement.locataire.prenom
-                : getNomPrenomLocataireById(paiement.locataire)
+              paiement.nomLocataire+" "+paiement.prenomLocataire
             }}
           </td>
 
@@ -68,7 +60,6 @@
                 {{ paiement.statut }}
               </span>
           </td>
-          <td>{{ paiement.residence?.nomResidence }}</td>
           <td>
               <span class="material-icons bg-info text-white p-2 rounded-circle boutton" [routerLink]="['../gestion-paiement',paiement.idPaiement]">
                 keyboard_arrow_right

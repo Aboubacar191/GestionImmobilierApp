@@ -86,6 +86,9 @@ export class UserService {
   getPaiementById(id: number): Observable<any> {
     return this.http.get(`${this.apiPaiements}/${id}`);
   }
+  getPaiementDetailsById(id: number): Observable<any> {
+    return this.http.get(`${this.apiPaiements}/details/${id}`);
+  }
 
   createPaiement(paiement: any): Observable<any> {
     return this.http.post(this.apiPaiements, paiement);
